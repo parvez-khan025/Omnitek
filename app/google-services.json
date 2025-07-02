@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "872450473176",
+    "project_id": "omnitekbd",
+    "storage_bucket": "omnitekbd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872450473176:android:d15a77eb6f9fe8892b2bad",
+        "android_client_info": {
+          "package_name": "com.example.omnitek"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU1YVVjLX4rUZCAA7XJfVmyeDFiaHYkms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
