@@ -1,11 +1,12 @@
-package com.example.omnitek
+package com.example.omnitek.views.starter
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.omnitek.R
 import com.example.omnitek.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {
@@ -25,7 +26,7 @@ class StartFragment : Fragment() {
             findNavController().navigate(R.id.action_startFragment_to_loginFragment)
         }
 
-        binding.registerText.setOnClickListener {
+        binding.registerButton.setOnClickListener {
             findNavController().navigate(R.id.action_startFragment_to_registerFragment)
         }
         return binding.root

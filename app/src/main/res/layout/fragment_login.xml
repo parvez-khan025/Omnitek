@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.login.LoginFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/logoImageView"
@@ -21,48 +18,89 @@
         android:layout_marginBottom="24dp"
         android:contentDescription="Logo" />
 
-    <EditText
-        android:id="@+id/emailEditText"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login to Omnitek"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:gravity="center"
+        android:layout_margin="@dimen/_8sdp"
+        android:textColor="#283593"
+        android:fontFamily="@font/acme"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/edittext_bg"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        app:endIconMode="clear_text">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp">
-
-        <EditText
-            android:id="@+id/passwordEditText"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:background="@drawable/edittext_bg" />
+            android:inputType="textEmailAddress"
+            />
 
-        <ImageView
-            android:id="@+id/passwordToggle"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/eye_open" />
-    </RelativeLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/loginButton"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textWebPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Login"
+        android:layout_marginTop="@dimen/_16sdp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:backgroundTint="#3F51B5"
         android:textColor="#FFFFFF"
         android:padding="12dp" />
-    </LinearLayout>
 
-</FrameLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/noAcc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?" />
+
+        <TextView
+            android:id="@+id/registerTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Register"
+            android:textStyle="bold"
+            android:textColor="#283593"
+            android:layout_toEndOf="@id/noAcc"
+            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>
