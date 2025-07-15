@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.omnitek.R
+import com.example.omnitek.data.repository.AuthRepository
 import com.example.omnitek.databinding.FragmentLoginBinding
 import com.example.omnitek.isEmpty
 
@@ -37,15 +38,28 @@ class LoginFragment : Fragment() {
             registerTV.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment2)
             }
+
             loginBtn.setOnClickListener {
-                etEmail.isEmpty()
-                etPass.isEmpty()
+                val email = etEmail.text.toString().trim()
+                val password = etPass.text.toString().trim()
 
-                if (!etEmail.isEmpty() && !etPass.isEmpty()){
-                    Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+                val isEmailEmpty = etEmail.isEmpty()
+                val isPasswordEmpty = etPass.isEmpty()
+
+                if (!isEmailEmpty && !isPasswordEmpty) {
+                    val authRepo = AuthRepository()
+                    authRepo.Login(email, password).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            findNavController().navigate(R.id.action_loginFragment_to_dashBoardFragment)
+                        } else {
+                            Toast.makeText(context, "Login Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        }
+                        etEmail.text?.clear()
+                        etPass.text?.clear()
+                    }
                 }
-
             }
         }
     }
+
 }

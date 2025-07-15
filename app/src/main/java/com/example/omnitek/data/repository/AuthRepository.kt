@@ -8,14 +8,16 @@ import com.google.firebase.auth.FirebaseAuth
 
 class AuthRepository: AuthService  {
 
+    private val jAuth = FirebaseAuth.getInstance()
+
     override fun userRegistration(user: UserRegistration): Task<AuthResult> {
-        val jAuth = FirebaseAuth.getInstance()
 
        return jAuth.createUserWithEmailAndPassword(user.email, user.password)
 
     }
 
-    override fun Login() {
-        TODO("Not yet implemented")
+    override fun Login(email: String, password: String): Task<AuthResult> {
+
+        return jAuth.signInWithEmailAndPassword(email, password)
     }
 }

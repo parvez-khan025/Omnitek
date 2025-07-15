@@ -43,7 +43,7 @@ class RegisterFragment : Fragment() {
                 etPass.isEmpty()
                 toggleButton.isEmpty()
 
-                if (!etName.isEmpty() && !etEmail.isEmpty() && !etNum.isEmpty() && !etPass.isEmpty() && !toggleButton.isEmpty()){
+                if (!etName.isEmpty() && !etEmail.isEmpty() && !etNum.isEmpty() && !etPass.isEmpty() && !toggleButton.isEmpty()) {
                     Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
 
                     val user = UserRegistration(
@@ -55,9 +55,14 @@ class RegisterFragment : Fragment() {
                         userID = ""
                     )
                     viewModel.userRegistration(user)
+
+                    etName.text?.clear()
+                    etEmail.text?.clear()
+                    etNum.text?.clear()
+                    etPass.text?.clear()
                 }
 
             }
         }
+        }
     }
-}
