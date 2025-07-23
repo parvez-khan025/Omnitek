@@ -7,29 +7,29 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.omnitek.R
+import com.example.omnitek.base.BaseFragment
 import com.example.omnitek.databinding.FragmentStartBinding
 
-class StartFragment : Fragment() {
-    private lateinit var binding: FragmentStartBinding
-
+class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentStartBinding.inflate(inflater, container, false)
+    override fun setListener() {
+        with(binding) {
 
-        binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_loginFragment)
+            loginButton.setOnClickListener {
+                findNavController().navigate(R.id.action_startFragment_to_loginFragment)
+            }
+
+            registerButton.setOnClickListener {
+                findNavController().navigate(R.id.action_startFragment_to_registerFragment)
+            }
         }
 
-        binding.registerButton.setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_registerFragment)
-        }
-        return binding.root
     }
 
+    override fun allObserver() {
+
+    }
 }
