@@ -1,14 +1,17 @@
 package com.example.omnitek.data.repository
 
+import com.example.omnitek.data.models.UserLogin
 import com.example.omnitek.data.models.UserRegistration
 import com.example.omnitek.data.service.AuthService
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import javax.inject.Inject
 
-class AuthRepository: AuthService  {
+class AuthRepository @Inject constructor(
 
-    private val jAuth = FirebaseAuth.getInstance()
+    private val jAuth: FirebaseAuth
+) : AuthService  {
 
     override fun userRegistration(user: UserRegistration): Task<AuthResult> {
 
@@ -16,8 +19,8 @@ class AuthRepository: AuthService  {
 
     }
 
-    override fun Login(email: String, password: String): Task<AuthResult> {
-
-        return jAuth.signInWithEmailAndPassword(email, password)
+    override fun userLogin(user: UserLogin): Task<AuthResult> {
+        return jAuth.signInWithEmailAndPassword(user.email, user.password)
     }
+
 }

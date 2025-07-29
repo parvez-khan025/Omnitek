@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.omnitek.R
 import com.example.omnitek.base.BaseFragment
 import com.example.omnitek.databinding.FragmentStartBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -7,8 +7,14 @@ import androidx.lifecycle.ViewModel
 import com.example.omnitek.core.DataState
 import com.example.omnitek.data.models.UserRegistration
 import com.example.omnitek.data.repository.AuthRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RegistrationViewModel: ViewModel() {
+@HiltViewModel
+class RegistrationViewModel @Inject constructor(
+    private val authService: AuthRepository
+) :  ViewModel() {
+
 
     private val _registrationResponse = MutableLiveData<DataState<UserRegistration>>()
 
@@ -17,8 +23,6 @@ class RegistrationViewModel: ViewModel() {
     fun userRegistration(user: UserRegistration) {
 
         _registrationResponse.postValue(DataState.Loading())
-
-        val authService = AuthRepository()
 
         authService.userRegistration(user).addOnSuccessListener {
 

@@ -10,7 +10,9 @@ import com.example.omnitek.core.DataState
 import com.example.omnitek.data.models.UserRegistration
 import com.example.omnitek.databinding.FragmentRegisterBinding
 import com.example.omnitek.isEmpty
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
 
     private val viewModel: RegistrationViewModel by viewModels()

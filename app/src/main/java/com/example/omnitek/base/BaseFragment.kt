@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.omnitek.core.DataState
-
+import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("DEPRECATION")
 abstract class BaseFragment<VB : ViewBinding> (
