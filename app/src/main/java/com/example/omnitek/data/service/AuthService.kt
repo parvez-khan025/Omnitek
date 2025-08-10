@@ -9,4 +9,5 @@ import com.google.firebase.auth.AuthResult
 interface AuthService {
     fun userRegistration(user:UserRegistration): Task<AuthResult>
     fun userLogin(user: UserLogin): Task<AuthResult>
+    fun createUser(user: UserRegistration) : Task<Void>
 }

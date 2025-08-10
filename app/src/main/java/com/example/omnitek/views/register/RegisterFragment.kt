@@ -62,6 +62,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 is DataState.Success -> {
                     loading.dismiss()
                     Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_registerFragment_to_dashBoardFragment)
                 }
                 is DataState.Error -> {
                     loading.dismiss()
