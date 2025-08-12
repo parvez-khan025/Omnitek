@@ -1,16 +1,15 @@
 package com.example.omnitek.views.starter
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.omnitek.R
 import com.example.omnitek.base.BaseFragment
 import com.example.omnitek.databinding.FragmentStartBinding
+import com.example.omnitek.views.dashboard.seller.SellerDashboard
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.jvm.java
 
 @AndroidEntryPoint
 class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
@@ -37,7 +36,8 @@ class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::i
 
     private fun setAutoLogin() {
         FirebaseAuth.getInstance().currentUser?.let {
-            findNavController().navigate(R.id.action_startFragment_to_dashBoardFragment)
+            startActivity(Intent(requireContext(), SellerDashboard::class.java))
+            requireActivity().finish()
         }
     }
 

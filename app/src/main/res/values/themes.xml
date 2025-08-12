@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Omnitek" parent="Base.Theme.Omnitek" />
+    <style name="Theme.Omnitek.App.Bar" parent="Theme.Material3.DayNight"/>
 </resources>

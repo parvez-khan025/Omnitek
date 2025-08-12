@@ -1,5 +1,6 @@
 package com.example.omnitek.views.register
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.viewModels
@@ -10,6 +11,7 @@ import com.example.omnitek.core.DataState
 import com.example.omnitek.data.models.UserRegistration
 import com.example.omnitek.databinding.FragmentRegisterBinding
 import com.example.omnitek.isEmpty
+import com.example.omnitek.views.dashboard.seller.SellerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,8 +64,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 is DataState.Success -> {
                     loading.dismiss()
                     Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_registerFragment_to_dashBoardFragment)
-                }
+                    startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                    requireActivity().finish()                }
                 is DataState.Error -> {
                     loading.dismiss()
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
