@@ -1,19 +1,48 @@
 package com.example.omnitek.views.dashboard.seller.product
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.omnitek.R
+import androidx.fragment.app.viewModels
+import com.example.omnitek.base.BaseFragment
+import com.example.omnitek.core.DataState
+import com.example.omnitek.data.models.Product
+import com.example.omnitek.databinding.FragmentMyProductBinding
+import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
-class myProductFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_product, container, false)
+@AndroidEntryPoint
+class myProductFragment : BaseFragment<FragmentMyProductBinding>(FragmentMyProductBinding::inflate) {
+
+    private val viewModel: ProductViewModel by viewModels()
+    override fun setListener() {
+        FirebaseAuth.getInstance().currentUser?.let {
+            viewModel.getProductByID(it.uid)
+
+        }
+
+    }
+
+    override fun allObserver() {
+        viewModel.productResponse.observe(viewLifecycleOwner){
+
+            when(it){
+                is DataState.Error -> {
+                    loading.dismiss()
+                }
+                is DataState.Loading-> {
+                    loading.show()
+                }
+                is DataState.Success-> {
+                    loading.dismiss()
+                    it.data?.let { it1->
+                        setDataToRV(it1)
+                    }
+                }
+            }
+        }
+
+    }
+
+    private fun setDataToRV(it: List<Product>) {
+        binding.rvSeller.adapter = SellerProductAdapter(it)
     }
 }

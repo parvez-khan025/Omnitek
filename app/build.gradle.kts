@@ -72,4 +72,11 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    //imagePicker
+    implementation(libs.imagePicker)
+    implementation(libs.circleimageview)
+    implementation(libs.coil)
+    implementation(libs.glide)
+
 }
