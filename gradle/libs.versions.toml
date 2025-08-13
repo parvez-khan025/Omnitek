@@ -22,6 +22,8 @@ navigationUiKtx = "2.9.2"
 lottie = "6.6.0"
 hilt="2.51.1"
 
+imagePicker ="2.1"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,6 +46,7 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 hilt-android= { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler= { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+imagePicker= { group = "com.github.dhaval2404", name = "imagePicker", version.ref = "imagePicker" }
 
 
 
