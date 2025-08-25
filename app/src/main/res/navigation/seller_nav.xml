@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_seller_profile" />
     <fragment
         android:id="@+id/myProductFragment"
-        android:name="com.example.omnitek.views.dashboard.seller.product.myProductFragment"
+        android:name="com.example.omnitek.views.dashboard.seller.product.MyProductFragment"
         android:label="All Pproducts"
         tools:layout="@layout/fragment_my_product" />
     <fragment

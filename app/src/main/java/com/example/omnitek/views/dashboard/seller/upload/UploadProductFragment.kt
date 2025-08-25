@@ -2,26 +2,35 @@ package com.example.omnitek.views.dashboard.seller.upload
 
 import android.Manifest
 import android.app.Activity
+import android.content.Intent
 import android.os.Build
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.viewModels
 import com.example.omnitek.base.BaseFragment
 import com.example.omnitek.core.allPermissionGranted
 import com.example.omnitek.core.extract
 import com.example.omnitek.core.requestPermissions
 import com.example.omnitek.data.models.Product
 import com.example.omnitek.databinding.FragmentUploadProductBinding
+import com.example.omnitek.views.dashboard.seller.SellerDashboard
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.UUID
 
 
 @AndroidEntryPoint
 class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(
     FragmentUploadProductBinding::inflate
 ){
+    private val product: Product by lazy {
+        Product()
+    }
 
+    private val viewModel : UploadProductViewModel by viewModels()
     override fun setListener() {
 
         permissionRequest = getPermissionsRequest()
@@ -33,7 +42,25 @@ class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(
 
             btnUploadProduct.setOnClickListener {
 
+                val name = productName.extract()
+                val description = productDescription.extract()
+                val price = productPrice.extract()
+                val quantity = productQuantity.extract()
+
+
+                FirebaseAuth.getInstance().currentUser?.let {
+                    product.apply{
+                        this.productId = UUID.randomUUID().toString()
+                        this.name = name
+                        this.description = description
+                        this.price = price.toDouble()
+                        this.quantity = quantity.toInt()
+                    }
+                }
+
                 uploadProduct(product)
+                startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                requireActivity().finish()
 
             }
         }

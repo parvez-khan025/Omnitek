@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.omnitek"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.omnitek"
@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.firebase.inappmessaging.display)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,4 +73,11 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    //imagepicker
+    implementation(libs.imagePicker)
+
+    implementation(libs.circleimageview)
+    implementation(libs.coil)
+    implementation(libs.glide)
 }

@@ -10,9 +10,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class myProductFragment : BaseFragment<FragmentMyProductBinding>(FragmentMyProductBinding::inflate) {
+class MyProductFragment :
+    BaseFragment<FragmentMyProductBinding>(FragmentMyProductBinding::inflate) {
 
     private val viewModel: ProductViewModel by viewModels()
+
     override fun setListener() {
         FirebaseAuth.getInstance().currentUser?.let {
             viewModel.getProductByID(it.uid)
@@ -22,18 +24,20 @@ class myProductFragment : BaseFragment<FragmentMyProductBinding>(FragmentMyProdu
     }
 
     override fun allObserver() {
-        viewModel.productResponse.observe(viewLifecycleOwner){
+        viewModel.productResponse.observe(viewLifecycleOwner) {
 
-            when(it){
+            when (it) {
                 is DataState.Error -> {
                     loading.dismiss()
                 }
-                is DataState.Loading-> {
+
+                is DataState.Loading -> {
                     loading.show()
                 }
-                is DataState.Success-> {
+
+                is DataState.Success -> {
                     loading.dismiss()
-                    it.data?.let { it1->
+                    it.data?.let { it1 ->
                         setDataToRV(it1)
                     }
                 }

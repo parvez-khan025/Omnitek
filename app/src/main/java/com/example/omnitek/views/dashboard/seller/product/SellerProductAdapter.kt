@@ -26,7 +26,7 @@ class SellerProductAdapter(val productList : List<Product>) : RecyclerView.Adapt
                 TVProductName.text = it.name
                 TVProductDescription.text = it.description
                 TVProductStock.text = "Stock : ${it.quantity}"
-                TVProductPrice.text = "Price : ${it.price}"
+                TVProductPrice.text = "Price : $${it.price}"
                 ivProduct.load(it.imagelink)
             }
         }
