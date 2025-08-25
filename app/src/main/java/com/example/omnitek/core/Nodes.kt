@@ -4,4 +4,6 @@ object Nodes {
     const val USER = "User"
     const val PRODUCT = "Products"
     const val SELLERID = "SellerID"
+    const val PROFILE = "Profiles"
+    const val USERID = "userID"
 }

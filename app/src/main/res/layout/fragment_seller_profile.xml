@@ -1,10 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F883"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
     tools:context=".views.dashboard.seller.profile.SellerProfileFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginVertical="@dimen/_32sdp"
+            android:src="@drawable/ic_image_placeholder"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/txt_shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            tools:text="OmniTek Shop"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="#E91E63" />
+
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
+            android:inputType="text"
+            tools:text="Parvez Khan"
+            android:fontFamily="@font/poppins"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
+            android:inputType="textEmailAddress"
+            tools:text="omnitek@gmail.com"
+            android:fontFamily="@font/poppins"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+        <Button
+            android:id="@+id/btn_update"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="#E91E63"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Update Profile"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>
